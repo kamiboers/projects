@@ -1,0 +1,4 @@
+# test_creates_random_value
+# test_assigns_movie_name_to_the_random_value
+# test_stores_movie_name_and_rating_in_a_hash
+# test_gives_root_value_of_random_value_if_root_empty
