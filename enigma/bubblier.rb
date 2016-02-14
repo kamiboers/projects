@@ -2,8 +2,10 @@ require 'pry'
 
 class BubblierSort
 
-def initialize
+def initialize()
   @switches = 0
+  @time = 0
+  @time_elapsed = 0
 end
 
 def sort(array)
@@ -64,5 +66,7 @@ end
 end
 
 test = BubblierSort.new
-test.sort((1..10000).to_a.shuffle)
 test.sort(['a', 'c', 'd', 'A', 'a', 'f'])
+
+test = BubblierSort.new
+test.sort((1..10000).to_a.shuffle)
