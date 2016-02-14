@@ -20,8 +20,8 @@ class BubbleTest < Minitest::Test
 
   def test_swap_only_when_out_of_order
     test = BubblierSort.new
-    assert_equal [1,2], test.sort([2,1])
-    assert_equal [1,2], test.sort([1,2])
+    assert_equal [1,2], test.compare([2,1])
+    assert_equal [1,2], test.compare([1,2])
   end
 
   def test_move_up_one_position
