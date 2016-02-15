@@ -41,4 +41,4 @@ end
 end
 
 test = InsertionSort.new
-test.sort((1..10000).to_a.shuffle)
+test.sort((1..1000).to_a.shuffle)

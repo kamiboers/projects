@@ -65,9 +65,10 @@ def timer_stop
 end
 
 end
+if __FILE__ == $0
+test = BubblierSort.new
+
 
 test = BubblierSort.new
-test.sort(['a', 'c', 'd', 'A', 'a', 'f'])
-
-test = BubblierSort.new
-test.sort((1..10000).to_a.shuffle)
+test.sort((1..10).to_a.shuffle)
+end

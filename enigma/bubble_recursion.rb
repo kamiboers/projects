@@ -37,4 +37,4 @@ class BubbleSort
 
 end
   test = BubbleSort.new
-  test.sort((1..10000).to_a.shuffle)
+  test.sort((1..10).to_a.shuffle)
