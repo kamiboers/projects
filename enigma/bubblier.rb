@@ -53,6 +53,7 @@ def print_final(array)
   puts "\nSorted values:\n #{array.to_s}"
   puts "\nNumber of value switches: #{@switches}"
   puts "#{@time_elapsed} seconds elapsed during sorting.\n"
+  initialize
 end
 
 def timer_start
