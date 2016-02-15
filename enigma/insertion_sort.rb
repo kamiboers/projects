@@ -3,11 +3,11 @@ require 'pry'
 #figure out where the divide is and should change and you'll be golden
 class InsSort
 
-  def initialize(divide=0, time=0, time_elapsed=0, switches=0)
+  def initialize(divide=0, time=0, time_elapsed=0, value=0)
     @divide = divide
     @time = time
     @time_elapsed = time_elapsed
-    @switches = switches
+    @value = value
   end
 
   def sort(array)
@@ -38,27 +38,24 @@ class InsSort
   def move_next_value_to_sorted_side(array, divide)
     @divide +=1
     array[divide], array[divide+1] = array[divide+1], array[divide]
-    value = array[divide-1]
-    pos = divide-1
-    bubble_down_sort(array, value)
+    @value = array[@divide-1]
+    insert_value(array, @value)
   end
 
 
   #fix this, and should be done
 
-  def bubble_down_sort(array, value)
+  def insert_value(array, value)
 # starting at the value just moved into the sorted side
 # if it is greater than its neighbor, or in position array[0] do nothing
-# else swap the value with its neighbor
-# continue to swap values until greater than neighbor or in position array[0]
-# when done, move next value to sorted side of the array
+# else traverse the array until at position array[0] or greater than previous neighbor
 
     pos = @divide-1
-        until pos == 0 || array[pos] >= array[pos-1]
-          array[pos], array[pos-1] = array[pos-1], array[pos]
-          @switches += 1
+        until pos == 0 || value >= array[pos-1]
           pos -=1
         end
+        array.delete_at(@divide-1)
+        array.insert(pos, value)
       if !array_sorted?(array)
         move_next_value_to_sorted_side(array, @divide)
       end
@@ -77,10 +74,10 @@ def timer_start
 end
 
 def timer_stop
-  @time_elapsed = Time.now - @time
+    @time_elapsed = Time.now - @time
 end
 
 end
 
 test = InsSort.new
-test.sort((1..500).to_a.shuffle)
+test.sort((1..1000).to_a.shuffle)
