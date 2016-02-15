@@ -15,9 +15,7 @@ class InsSort
     timer_start
     add_sorting_division_to_array(array)
     first_value_automatically_sorted(array)
-    until array_sorted?(array)
       move_next_value_to_sorted_side(array, @divide)
-    end
       timer_stop
       return_sorted_array(array)
   end
@@ -31,19 +29,15 @@ class InsSort
     @divide+=1
   end
 
-  def array_sorted?(array)
-    array.compact == array.compact.sort
-  end
 
   def move_next_value_to_sorted_side(array, divide)
-    @divide +=1
-    array[divide], array[divide+1] = array[divide+1], array[divide]
-    @value = array[@divide-1]
-    insert_value(array, @value)
+    unless array[-1] == nil
+      @divide +=1
+      array[divide], array[divide+1] = array[divide+1], array[divide]
+      @value = array[@divide-1]
+      insert_value(array, @value)
+    end
   end
-
-
-  #fix this, and should be done
 
   def insert_value(array, value)
 # starting at the value just moved into the sorted side
@@ -56,15 +50,12 @@ class InsSort
         end
         array.delete_at(@divide-1)
         array.insert(pos, value)
-      if !array_sorted?(array)
         move_next_value_to_sorted_side(array, @divide)
-      end
   end
 
 
 def return_sorted_array(array)
   puts "Sorted array: #{array.compact.to_s}"
-  puts "\nNumber of value switches: #{@switches}"
   puts "#{@time_elapsed} seconds elapsed during sorting.\n"
   initialize
 end
