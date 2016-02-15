@@ -71,4 +71,5 @@ end
 end
 
 test = InsSort.new
-test.sort((1..1000).to_a.shuffle)
+# test.sort((1..1000).to_a.shuffle)
+test.sort(["d", "b", "a", "c"])
