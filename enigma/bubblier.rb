@@ -1,15 +1,15 @@
 require 'pry'
 
-class BubblierSort
+class BubbleSort
 
 def initialize()
   @switches = 0
-  @time = 0
+  @time_start = nil
   @time_elapsed = 0
 end
 
 def sort(array)
-  print_original(array)
+  puts display_original(array)
   timer_start
   @num_fewer_comparisons = 0
     until @sorted == true
@@ -20,8 +20,8 @@ def sort(array)
     print_final(array)
 end
 
-def print_original(array)
-  puts "\nScrambled values:\n #{array.to_s}"
+def display_original(array)
+  "\nScrambled values:\n #{array.to_s}"
 end
 
 def traverse_array(array)
@@ -34,10 +34,14 @@ def traverse_array(array)
 end
 
 def compare_neighboring_values(array, pos)
-  if pos < array.length-1 && array[pos] > array[pos+1]
+  if neighbors_out_of_order?(array, pos)
     switch_neighboring_value_order(array, pos)
     one_value_switch_occurs
   end
+end
+
+def neighbors_out_of_order?(array, pos)
+  pos < array.length-1 && array[pos] > array[pos+1]
 end
 
 def switch_neighboring_value_order(array, pos=0)
@@ -57,18 +61,18 @@ def print_final(array)
 end
 
 def timer_start
-  @time = Time.now
+  @time_start = Time.now
 end
 
 def timer_stop
-  @time_elapsed = Time.now - @time
+  @time_elapsed = Time.now - @time_start
 end
 
 end
 if __FILE__ == $0
-test = BubblierSort.new
 
 
-test = BubblierSort.new
+
+test = BubbleSort.new
 test.sort((1..10).to_a.shuffle)
 end
