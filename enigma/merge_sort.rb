@@ -6,8 +6,11 @@ class MergeSort
   end
 
   def sort(array)
+    split(array)
+  end
 
-    n = array.length
+  def split(array)
+  n = array.length
     return array if n == 1
     midpoint = n/2
 
@@ -16,9 +19,8 @@ class MergeSort
 
      left = sort(left_array)
      right = sort(right_array)
-
+     
     #  merge(left, right)
-
   end
 
   def merge(left, right)
