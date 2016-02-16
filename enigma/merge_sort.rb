@@ -17,31 +17,28 @@ class MergeSort
      left_array = array[0...midpoint]
      right_array = array[midpoint..n]
 
-     left = split(left_array)
-     right = split(right_array)
-
-     merge(left, right)
+     merge(sort(left_array), sort(right_array))
   end
 
   def merge(left, right)
     sorted =[]
-
-    until left.empty? || right.empty?
-      if left[0] <= right[0] || right[0] == nil
+    until left.length == 0 || right.length == 0 do
+      if left[0] <= right[0]
         sorted << left.shift
-      elsif right[0] <= left[0] || left[0] == nil
+      elsif right[0] <= left[0]
         sorted << right.shift
       else
-        sorted << right.shift
         sorted << left.shift
+        sorted << right.shift
       end
     end
-    puts (sorted + left + right)
+    sorted + left + right
   end
 
 
 end
 
 test = MergeSort.new
-array = [2,1,4,3]
-test.sort(array)
+array = (1..100).to_a.shuffle
+puts array.to_s
+puts test.sort(array).to_s
