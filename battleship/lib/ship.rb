@@ -1,9 +1,11 @@
 class Ship
   attr_reader :length
+  attr_accessor :hits
 
-def initialize(length=2, hits=0)
+def initialize(length=2, hits=0, filler="S")
   @length = length
   @hits = hits
+  @filler = filler
 end
 
 def length

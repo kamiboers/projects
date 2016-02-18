@@ -1,5 +1,5 @@
 require 'pry'
-require 'user_input'
+require_relative 'user_interface'
 
 
 class ComputerInput

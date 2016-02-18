@@ -1,13 +1,12 @@
 require 'pry'
-require 'computer_input'
+require_relative 'board_and_cells'
 
 class UI
   def initialize
-    @user_board = Board.new
-
   end
 
 def game_introduction
+  puts "Welcome to BATTLESHIP \n Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
 end
 
 def prompt_to_begin_game
@@ -36,5 +35,10 @@ end
 
 def prompt_to_play_again
 end
+
+end
+
+if __FILE__ == $0
+user_interface = UI.new
 
 end

@@ -7,9 +7,8 @@ class Board
   def initialize(board_size=4)
     @board_size = board_size
     @row_headings = ("A".."Z").first(@board_size)
-
-    @grid = Array.new(@board_size).map do |row|
-      Array.new(@board_size).map do |space|
+    @grid = Array.new(board_size).map do |row|
+      Array.new(board_size).map do |space|
 
         Cell.new #(self) will store the board ID here - simpler, easier to read way?
       end
@@ -21,11 +20,8 @@ class Board
     (0...@board_size).each do |y_pos|
       (0...@board_size).each do |x_pos|
         cell = (@grid[y_pos][x_pos])
-        cell.x = x_pos+1
-        cell.y = y_pos+1
         cell.name = @row_headings[y_pos] + (x_pos+1).to_s
       end
-      binding.pry
     end
   end
 
@@ -45,7 +41,16 @@ class Board
     end
       print "\n"
   end
-  binding.pry
+  end
+
+  def select_cell_by_name(grid, cell_name)
+    row = @row_headings.select do |letter|
+      letter == cell_name[0]
+    end
+
+      cell = grid[row].select do |cell|
+      cell.name == cell_name
+      end
   end
 
 end
@@ -53,42 +58,20 @@ end
 
 
 class Cell
+  attr_accessor :value, :ship, :name
 
-  attr_accessor :x, :y, :value, :ship, :name
-
-
-  def initialize(x=nil, y=nil, value=".", ship=false, name=nil)
-    @x = x
-    @y = y
+  def initialize(value=".", ship=false, name=nil)
     @value = value
     @ship = ship
     @name = name
   end
 
-  # def x
-  #   @x
-  # end
-  #
-  # def y
-  #   @y
-  # end
-  #
-  # def name
-  #   @name
-  # end
-  #
-  # def value
-  #   @value
-  # end
-  #
-  # def ship
-  #   @ship
-  # end
-
 end
 
 
-
+if __FILE__ == $0
 gameboard = Board.new
-binding.pry
+
+gameboard.select_cell_by_name(@user_board, "C3")
 gameboard.display_board_frame
+end

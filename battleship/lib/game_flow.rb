@@ -1,15 +1,27 @@
+require 'pry'
+require_relative 'board_and_cells'
+require_relative 'user_interface'
+require_relative 'computer_input'
+
 class GameFlow
   def initialize
+    generate_user_and_computer_placement_boards
     generate_user_and_computer_view_boards
   end
 
-  def generate_user_and_computer_view_boards
-    @user_view = @computer_board.map
-    @computer_view = @user_board.dup
+  def generate_user_and_computer_placement_boards
+      @user_board = Board.new
+      @computer_board = Board.new
+      binding.pry
   end
 
-  def convert_view_board_into_true_false_dichotomy
+  def placement_of_user_and_computer_ships
+  end
 
+  def generate_user_and_computer_view_boards
+    @user_view = @computer_board.dup
+    @computer_view = @user_board.dup
+    binding.pry
   end
 
   def player_shot
@@ -55,3 +67,8 @@ end
 # 13 - Prompt to play again
 # 14 - If yes, loop back to 1 or 2
 # 15 - Exit game
+
+
+if __FILE__ == $0
+  game_play = GameFlow.new
+end
