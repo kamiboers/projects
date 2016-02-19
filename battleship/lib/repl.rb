@@ -16,6 +16,16 @@ class Repl
     end
   end
 
+  def valid_ship_placement_input(input, ship_length)
+    @user_interface.is_it_q(input)
+    if input.split(" ").count == ship_length
+      squares = input.split(" ")
+    else
+      @user_interface.input_invalid
+    end
+
+  end
+
   def is_it_q(input)
     if input == "q" || input == "quit"
       puts "\nGoodbye\n"

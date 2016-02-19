@@ -23,7 +23,6 @@ class Board
         cell.name = @row_headings[y_pos] + (x_pos+1).to_s
       end
     end
-    flatten(grid)
   end
 
   def display_board_frame
@@ -50,8 +49,9 @@ class Board
       end
   end
 
-  def place_ship(ship)
-    ship.length
+  def place_ship(square)
+    square.value = "S"
+    square.ship = true
   end
 
   def grid
@@ -59,8 +59,6 @@ class Board
   end
 
 end
-
-
 
 class Cell
   attr_accessor :value, :ship, :name

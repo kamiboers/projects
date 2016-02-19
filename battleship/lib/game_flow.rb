@@ -4,15 +4,17 @@ require_relative 'user_interface'
 require_relative 'computer_input'
 
 class GameFlow
+  attr_accessor :user_board, :user_view, :computer_board, :computer_view
+
   def initialize
     generate_user_and_computer_placement_boards
-    placement_of_user_and_computer_ships
+    # placement_of_user_and_computer_ships
+    generate_user_and_computer_view_boards
   end
 
   def generate_user_and_computer_placement_boards
-      @user_board = Board.new.grid
-      @computer_board = Board.new.grid
-      binding.pry
+      @user_board = Board.new.grid.flatten
+      @computer_board = Board.new.grid.flatten
   end
 
   def placement_of_user_and_computer_ships
@@ -24,7 +26,6 @@ class GameFlow
   def generate_user_and_computer_view_boards
     @user_view = @computer_board.dup
     @computer_view = @user_board.dup
-    binding.pry
   end
 
   def player_shot
