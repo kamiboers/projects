@@ -6,16 +6,19 @@ require_relative 'computer_input'
 class GameFlow
   def initialize
     generate_user_and_computer_placement_boards
-    generate_user_and_computer_view_boards
+    placement_of_user_and_computer_ships
   end
 
   def generate_user_and_computer_placement_boards
-      @user_board = Board.new
-      @computer_board = Board.new
+      @user_board = Board.new.grid
+      @computer_board = Board.new.grid
       binding.pry
   end
 
   def placement_of_user_and_computer_ships
+    #place computer ships
+    #prompt user to place ships
+    generate_user_and_computer_view_boards
   end
 
   def generate_user_and_computer_view_boards

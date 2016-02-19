@@ -1,4 +1,5 @@
 class Ship
+  
   attr_reader :length
   attr_accessor :hits
 
@@ -10,9 +11,6 @@ end
 
 def length
   @length
-end
-
-def add_ship
 end
 
 def placement_parameters

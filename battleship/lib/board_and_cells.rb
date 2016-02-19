@@ -1,16 +1,16 @@
 require 'pry'
+require_relative 'ship'
 
 class Board
 
-  attr_accessor :board_size
+  attr_accessor :board_size, :grid
 
   def initialize(board_size=4)
     @board_size = board_size
     @row_headings = ("A".."Z").first(@board_size)
     @grid = Array.new(board_size).map do |row|
       Array.new(board_size).map do |space|
-
-        Cell.new #(self) will store the board ID here - simpler, easier to read way?
+        Cell.new
       end
     end
     assign_cell_coordinates
@@ -23,6 +23,12 @@ class Board
         cell.name = @row_headings[y_pos] + (x_pos+1).to_s
       end
     end
+    flatten(grid)
+  end
+
+  def flatten(grid)
+    @grid = @grid.flatten!
+    binding.pry
   end
 
   def display_board_frame
@@ -44,13 +50,17 @@ class Board
   end
 
   def select_cell_by_name(grid, cell_name)
-    row = @row_headings.select do |letter|
-      letter == cell_name[0]
-    end
-
-      cell = grid[row].select do |cell|
+      cell = grid.flatten.select do |cell|
       cell.name == cell_name
       end
+  end
+
+  def place_ship(ship)
+    ship.length
+  end
+
+  def grid
+    @grid
   end
 
 end
@@ -71,7 +81,7 @@ end
 
 if __FILE__ == $0
 gameboard = Board.new
-
-gameboard.select_cell_by_name(@user_board, "C3")
-gameboard.display_board_frame
+tug_boat = Ship.new
+binding.pry
+gameboard.place_ship(tug_boat)
 end

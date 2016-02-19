@@ -10,9 +10,18 @@ class ComputerInput
   end
 
   def computer_randomly_places_its_ships
-  end
+    @computer_board.grid.sample.sample.ship = true
+binding.pry
+    end
 
   def computer_shoots_randomly_at_user_ships
   end
+
+end
+
+
+if __FILE__ == $0
+computer_play = ComputerInput.new
+binding.pry
 
 end
