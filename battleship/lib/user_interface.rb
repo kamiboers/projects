@@ -10,7 +10,15 @@ class UI
   def game_introduction
     puts "Welcome to BATTLESHIP \n Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
     input = String(gets.chomp)
-    @user_control.valid_input(input)
+    @user_control.valid_initial_input(input)
+  end
+
+  def show_player_instructions
+      puts "\n\nMASTERMIND has generated a sequence of colors. Your job is to guess the sequence. Each time that you guess, MASTERMIND will tell you how close you are to accuracy.\n\n"
+  end
+
+  def input_invalid
+    puts "\nEntry invalid. Please try again.\n"
   end
 
   def prompt_to_place_first_ship
@@ -29,15 +37,13 @@ class UI
     @user_control.valid_input(input)
   end
 
-  def user_places_ship(ship_cell)
-    @grid.each_with_index do |cell|
+  def user_places_ship(grid, ship_cell)
+    grid.each_with_index do |cell|
       if cell.name == ship_cell
         cell.ship = true
       end
     end
   end
-[2] pry(#<Board>)*   end
-[2] pry(#<Board>)* end
 
   def get_user_shot
     #display @user_view

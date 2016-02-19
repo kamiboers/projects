@@ -58,9 +58,12 @@ end
 
 # 1 - Display an introduction to the game
 # 2 - Prompt to play the game
+
 # 3 - Create 4 boards - computer, computer shots, user, user shots
+
 # 4 - Computer randomly places ships, this input is stored
 # 5 - Player prompted to place ships, input is stored
+
 # 6 - Player displayed an empty shot board, prompted for shot
 # 7 - Shot recorded on user board, return whether hit, miss, or hit and sunk
 # 8 - Computer shoots randomly

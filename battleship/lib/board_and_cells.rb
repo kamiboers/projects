@@ -26,11 +26,6 @@ class Board
     flatten(grid)
   end
 
-  def flatten(grid)
-    @grid = @grid.flatten!
-    binding.pry
-  end
-
   def display_board_frame
     frame_length = (@board_size*2.75)
     puts "=" * frame_length
